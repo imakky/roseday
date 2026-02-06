@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Happy Rose Day 🌹</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: "Segoe UI", sans-serif;
+
+        background: linear-gradient(
+          270deg,
+          #ff2f68,
+          #ff7eb3,
+          #ffc3a0,
+          #ff5fa2,
+          #ff2f68
+        );
+        background-size: 800% 800%;
+        animation: gradientFlow 18s ease infinite;
+      }
+
+      @keyframes gradientFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        25% {
+          background-position: 50% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        75% {
+          background-position: 50% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes bgMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Card */
+      .card {
+        background: white;
+        padding: 55px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        animation: entrance 2.5s ease;
+        z-index: 2;
+      }
+
+      @keyframes entrance {
+        from {
+          transform: scale(0.4) translateY(120px);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Heading */
+      .title {
+        color: #ff2f68;
+        font-size: 34px;
+        animation:
+          glow 2s infinite alternate,
+          float 4s infinite ease-in-out;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 10px pink;
+        }
+        to {
+          text-shadow: 0 0 40px hotpink;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Typing Text */
+      #typeText {
+        font-size: 20px;
+        color: #555;
+        min-height: 95px;
+        text-shadow: 0 0 6px pink;
+        animation:
+          softMove 4s infinite ease-in-out,
+          glowText 3s infinite alternate;
+      }
+
+      @keyframes softMove {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(8px);
+        }
+      }
+
+      @keyframes glowText {
+        from {
+          text-shadow: 0 0 5px pink;
+        }
+        to {
+          text-shadow: 0 0 18px hotpink;
+        }
+      }
+
+      /* Button */
+      button {
+        background: linear-gradient(45deg, #ff2f68, #ff9bbf);
+        border: none;
+        padding: 18px 45px;
+        font-size: 18px;
+        color: white;
+        border-radius: 50px;
+        cursor: pointer;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 15px pink;
+        }
+        50% {
+          box-shadow: 0 0 45px hotpink;
+        }
+        100% {
+          box-shadow: 0 0 15px pink;
+        }
+      }
+
+      /* Proposal */
+      #proposal {
+        margin-top: 25px;
+        animation: popText 2.2s ease;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @keyframes popText {
+        from {
+          opacity: 0;
+          transform: scale(0.2);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .propose-title {
+        color: #ff2f68;
+        animation: shimmer 2.5s infinite alternate;
+      }
+
+      @keyframes shimmer {
+        from {
+          letter-spacing: 1px;
+        }
+        to {
+          letter-spacing: 5px;
+        }
+      }
+
+      .propose-text {
+        font-size: 19px;
+        animation: fadeWave 4s infinite ease-in-out;
+      }
+
+      @keyframes fadeWave {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      /* Heart */
+      .big-heart {
+        font-size: 95px;
+        animation: beat 1.2s infinite;
+      }
+
+      @keyframes beat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.7);
+        }
+      }
+
+      /* Falling emojis */
+      .fall {
+        position: absolute;
+        font-size: 32px;
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        0% {
+          top: -40px;
+          opacity: 1;
+        }
+        100% {
+          top: 110vh;
+          opacity: 0;
+        }
+      }
+
+
+      /* Responsive magic */
+.card{
+  width: 90%;
+  max-width: 420px;
+  padding: 35px;
+}
+
+.title{
+  font-size: clamp(24px, 6vw, 34px);
+}
+
+#typeText{
+  font-size: clamp(16px, 4vw, 20px);
+  min-height: auto;
+}
+
+.propose-title{
+  font-size: clamp(22px, 6vw, 30px);
+}
+
+.propose-text{
+  font-size: clamp(15px, 4vw, 19px);
+}
+
+button{
+  padding: 14px 32px;
+  font-size: clamp(14px, 4vw, 18px);
+}
+
+/* Keep NO button visible on mobile */
+#noBtn{
+  max-width: 120px;
+  white-space: nowrap;
+}
+
+/* Smaller heart on phones */
+.big-heart{
+  font-size: clamp(60px, 20vw, 95px);
+}
+
+/* Avoid overflow on tiny screens */
+body{
+  padding: 10px;
+}
+
+/* Text responsiveness & clean wrapping */
+p, h1 {
+  word-wrap: break-word;
+  text-align: center;
+  line-height: 1.5;
+}
+
+#typeText, .propose-text {
+  max-width: 100%;
+  margin: 10px auto;
+}
+
+/* Better spacing for small screens */
+@media (max-width: 480px) {
+
+  .card {
+    padding: 22px;
+  }
+
+  #typeText {
+    line-height: 1.6;
+  }
+
+  .propose-text {
+    line-height: 1.6;
+  }
+
+  .title {
+    margin-bottom: 8px;
+  }
+}
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h1 class="title">Happy Rose Day Reshu 🌹</h1>
+
+      <p id="typeText"></p>
+
+      <button onclick="propose()">Open My Love 💌</button>
+
+     <div id="proposal" class="hidden">
+  <div class="big-heart">❤️</div>
+  <h1 class="propose-title">Will You Always Be Mine?</h1>
+  <p class="propose-text">
+    Reshu, I will love you more every sunrise 💕<br />
+    You are my forever rose 🌹✨
+  </p>
+
+  <div style="margin-top:20px; position:relative;">
+    <button onclick="yesLove()" style="margin-right:15px;">YES 💖</button>
+    <button id="noBtn" style="position:fixed;">NO 😜</button>
+  </div>
+</div>
+
+<script>
+const lines = [
+  "Every rose reminds me of your beautiful smile Reshu 💖",
+  "Your love fills my life with endless happiness 🌸",
+  "You are my forever beautiful rose 🌹",
+];
+
+const typeTextEl = document.getElementById("typeText");
+let lineIndex = 0;
+let charIndex = 0;
+
+function typeSmooth() {
+  if (lineIndex >= lines.length) return;
+
+  if (charIndex < lines[lineIndex].length) {
+    typeTextEl.innerHTML += lines[lineIndex][charIndex];
+    charIndex++;
+    setTimeout(typeSmooth, 55);
+  } else {
+    typeTextEl.innerHTML += "<br>";
+    lineIndex++;
+    charIndex = 0;
+    setTimeout(typeSmooth, 600);
+  }
+}
+typeSmooth();
+
+function propose() {
+  document.querySelector("button").style.display = "none";
+  typeTextEl.style.display = "none";
+  document.getElementById("proposal").classList.remove("hidden");
+}
+
+/* NO button runs away */
+const noBtn = document.getElementById("noBtn");
+
+setTimeout(() => {
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("click", moveNo);
+}, 500);
+
+function moveNo(){
+  const maxX = window.innerWidth - noBtn.offsetWidth;
+  const maxY = window.innerHeight - noBtn.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+
+/* YES triggers big rain */
+function yesLove(){
+  noBtn.style.display = "none";   
+  rainFast();               
+}
+
+/* Romantic rain on YES */
+function rainFast(){
+  setInterval(()=>{
+    const emojis=["🌹","🌹","❤️","💖","✨","💐"];
+    const el=document.createElement("div");
+    el.className="fall";
+    el.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left=Math.random()*100+"vw";
+    el.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),7000);
+  },120);
+}
+</script>
+
+  </body>
+</html>
